@@ -1,0 +1,7 @@
+WAP to visualize the Perceptron Learning Algorithm using numpy and matplotlib/seaborn in Python. 
+Evaluate performance of a single perceptron for NAND and XOR truth tables as input dataset.
+Train the model until convergence and display weight updates after each iteration.
+Visualize the learning process by plotting data points, decision boundary, and training error.
+Plot training error curves and analyze convergence behavior.
+explain the fundametntal of this experiment. 
+Analyze and compare the behavior of the perceptron for linearly separable and non-linearly separable datasets.
