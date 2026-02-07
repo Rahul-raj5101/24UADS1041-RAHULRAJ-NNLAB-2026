@@ -44,6 +44,8 @@ class Perceptron:
             if total_error == 0:
                 print("Model Converged!")
                 break
+            else:
+              print ("model cannot converge for XOR dataset!")
 
         return errors
 
