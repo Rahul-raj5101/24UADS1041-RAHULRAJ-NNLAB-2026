@@ -1,0 +1,94 @@
+get:0 Pred:1 Weights:[-0.1 -0.1] Bias:-0.1
+
+Epoch 2
+Input:[0 0] Target:1 Pred:0 Weights:[-0.1 -0.1] Bias:0.0
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0. ] Bias:0.1
+Input:[1 0] Target:1 Pred:1 Weights:[-0.1  0. ] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.2 -0.1] Bias:0.0
+
+Epoch 3
+Input:[0 0] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.0
+Input:[0 1] Target:1 Pred:0 Weights:[-0.2  0. ] Bias:0.1
+Input:[1 0] Target:1 Pred:0 Weights:[-0.1  0. ] Bias:0.2
+Input:[1 1] Target:0 Pred:1 Weights:[-0.2 -0.1] Bias:0.1
+
+Epoch 4
+Input:[0 0] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.1
+Input:[0 1] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.1
+Input:[1 0] Target:1 Pred:0 Weights:[-0.1 -0.1] Bias:0.2
+Input:[1 1] Target:0 Pred:1 Weights:[-0.2 -0.2] Bias:0.1
+
+Epoch 5
+Input:[0 0] Target:1 Pred:1 Weights:[-0.2 -0.2] Bias:0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.2 -0.1] Bias:0.2
+Input:[1 0] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.2
+Input:[1 1] Target:0 Pred:0 Weights:[-0.2 -0.1] Bias:0.2
+
+Epoch 6
+Input:[0 0] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.2
+Input:[0 1] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.2
+Input:[1 0] Target:1 Pred:1 Weights:[-0.2 -0.1] Bias:0.2
+Input:[1 1] Target:0 Pred:0 Weights:[-0.2 -0.1] Bias:0.2
+Model Converged!
+
+=== Training XOR Gate ===
+
+Epoch 1
+Input:[0 0] Target:0 Pred:1 Weights:[0. 0.] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:1 Weights:[0.  0.1] Bias:0.0
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+
+Epoch 2
+Input:[0 0] Target:0 Pred:0 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 3
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 4
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 5
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 6
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 7
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 8
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 9
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
+
+Epoch 10
+Input:[0 0] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:-0.1
+Input:[0 1] Target:1 Pred:0 Weights:[-0.1  0.1] Bias:0.0
+Input:[1 0] Target:1 Pred:0 Weights:[0.  0.1] Bias:0.1
+Input:[1 1] Target:0 Pred:1 Weights:[-0.1  0. ] Bias:0.0
