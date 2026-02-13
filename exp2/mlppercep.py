@@ -93,3 +93,29 @@ plt.title("Loss Curve")
 plt.xlabel("Epochs")
 plt.ylabel("Loss")
 plt.show()
+
+# Create mesh grid
+x_min, x_max = -0.5, 1.5
+y_min, y_max = -0.5, 1.5
+xx, yy = np.meshgrid(np.linspace(x_min, x_max, 200),
+                     np.linspace(y_min, y_max, 200))
+
+grid = np.c_[xx.ravel(), yy.ravel()]
+
+# Forward pass on grid
+Z1 = np.dot(grid, W1) + b1
+A1 = sigmoid(Z1)
+Z2 = np.dot(A1, W2) + b2
+A2 = sigmoid(Z2)
+
+Z = A2.reshape(xx.shape)
+
+plt.figure()
+plt.contourf(xx, yy, Z, alpha=0.6)
+plt.scatter(X[:,0], X[:,1], c=y.ravel(), edgecolors='k')
+plt.title("Decision Boundary for XOR (MLP)")
+plt.xlabel("Input x1")
+plt.ylabel("Input x2")
+plt.grid(True)
+plt.show()
+
