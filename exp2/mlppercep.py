@@ -1,121 +1,119 @@
+# -------------------------------
+# MLP for XOR Problem using NumPy
+# -------------------------------
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ----------------------------
-# 1. XOR Dataset
-# ----------------------------
-X = np.array([[0,0],
-              [0,1],
-              [1,0],
-              [1,1]])
+# -------------------------------
+# 1️⃣ XOR Dataset
+# -------------------------------
+X = np.array([
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+])
 
-y = np.array([[0],
-              [1],
-              [1],
-              [0]])
+y = np.array([[0], [1], [1], [0]])
 
-# ----------------------------
-# 2. Initialize Network
-# ----------------------------
-np.random.seed(1)
-
-input_neurons = 2
-hidden_neurons = 3
-output_neurons = 1
-
-W1 = np.random.uniform(-1, 1, (input_neurons, hidden_neurons))
-b1 = np.zeros((1, hidden_neurons))
-
-W2 = np.random.uniform(-1, 1, (hidden_neurons, output_neurons))
-b2 = np.zeros((1, output_neurons))
-
-# ----------------------------
-# 3. Activation Functions
-# ----------------------------
+# -------------------------------
+# 2️⃣ Activation Function
+# -------------------------------
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 def sigmoid_derivative(x):
     return x * (1 - x)
 
-# ----------------------------
-# 4. Training
-# ----------------------------
-learning_rate = 0.5
-epochs = 4000
-loss_list = []
+# -------------------------------
+# 3️⃣ Initialize Network Parameters
+# -------------------------------
+np.random.seed(42)
 
+input_size = 2
+hidden_size = 4
+output_size = 1
+
+# Weights
+W1 = np.random.randn(input_size, hidden_size)
+b1 = np.zeros((1, hidden_size))
+
+W2 = np.random.randn(hidden_size, output_size)
+b2 = np.zeros((1, output_size))
+
+# -------------------------------
+# 4️⃣ Hyperparameters
+# -------------------------------
+learning_rate = 0.1
+epochs = 10000
+losses = []
+
+# -------------------------------
+# 5️⃣ Training MLP (Backpropagation)
+# -------------------------------
 for epoch in range(epochs):
-
-    # Forward pass
-    hidden_input = X @ W1 + b1
+    # Forward Pass
+    hidden_input = np.dot(X, W1) + b1
     hidden_output = sigmoid(hidden_input)
-
-    final_input = hidden_output @ W2 + b2
-    final_output = sigmoid(final_input)
-
-    # Loss (Binary Cross Entropy-like MSE)
-    loss = np.mean((y - final_output)**2)
-    loss_list.append(loss)
-
+    
+    final_input = np.dot(hidden_output, W2) + b2
+    output = sigmoid(final_input)
+    
+    # Compute Loss (MSE)
+    loss = np.mean((y - output)**2)
+    losses.append(loss)
+    
     # Backpropagation
-    error_output = (final_output - y) * sigmoid_derivative(final_output)
-    error_hidden = error_output @ W2.T * sigmoid_derivative(hidden_output)
-
-    # Update weights
-    W2 -= learning_rate * hidden_output.T @ error_output
-    b2 -= learning_rate * np.sum(error_output, axis=0, keepdims=True)
-
-    W1 -= learning_rate * X.T @ error_hidden
-    b1 -= learning_rate * np.sum(error_hidden, axis=0, keepdims=True)
-
-    # ----------------------------
-    # Print some epochs
-    # ----------------------------
+    d_output = (y - output) * sigmoid_derivative(output)
+    d_hidden = d_output.dot(W2.T) * sigmoid_derivative(hidden_output)
+    
+    # Update Weights and Biases
+    W2 += hidden_output.T.dot(d_output) * learning_rate
+    b2 += np.sum(d_output, axis=0, keepdims=True) * learning_rate
+    
+    W1 += X.T.dot(d_hidden) * learning_rate
+    b1 += np.sum(d_hidden, axis=0, keepdims=True) * learning_rate
+    
+    # Print loss every 1000 epochs
     if epoch % 1000 == 0:
-        print(f"Epoch {epoch} | Loss: {loss:.6f}")
+        print(f"Epoch {epoch}, Loss: {loss:.6f}")
 
-# ----------------------------
-# 5. Final Predictions
-# ----------------------------
-print("\nFinal Predictions:")
-predictions = (final_output > 0.5).astype(int)
-print(predictions)
+# -------------------------------
+# 6️⃣ Final Predictions
+# -------------------------------
+print("\nFinal Predictions (after training):")
+print(output)
 
-print("\nActual Output:")
-print(y)
-
-# ----------------------------
-# 6. Plot Loss Curve
-# ----------------------------
-plt.plot(loss_list)
-plt.title("Loss Curve")
+# -------------------------------
+# 7️⃣ Plot Loss Curve
+# -------------------------------
+plt.plot(losses)
+plt.title("Loss vs Epochs")
 plt.xlabel("Epochs")
-plt.ylabel("Loss")
+plt.ylabel("Mean Squared Error")
 plt.show()
 
-# Create mesh grid
-x_min, x_max = -0.5, 1.5
-y_min, y_max = -0.5, 1.5
-xx, yy = np.meshgrid(np.linspace(x_min, x_max, 200),
-                     np.linspace(y_min, y_max, 200))
+# -------------------------------
+# 8️⃣ Plot Decision Boundary
+# -------------------------------
+def plot_decision_boundary():
+    x_min, x_max = -0.5, 1.5
+    y_min, y_max = -0.5, 1.5
+    h = 0.01
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                         np.arange(y_min, y_max, h))
+    grid = np.c_[xx.ravel(), yy.ravel()]
+    
+    hidden = sigmoid(np.dot(grid, W1) + b1)
+    out = sigmoid(np.dot(hidden, W2) + b2)
+    Z = out.reshape(xx.shape)
+    
+    plt.contourf(xx, yy, Z, levels=[0, 0.5, 1], alpha=0.3, colors=['#FFAAAA','#AAAAFF'])
+    plt.scatter(X[:,0], X[:,1], c=y.flatten(), edgecolors='k', s=100)
+    plt.title("Decision Boundary")
+    plt.xlabel("Input 1")
+    plt.ylabel("Input 2")
+    plt.show()
 
-grid = np.c_[xx.ravel(), yy.ravel()]
-
-# Forward pass on grid
-Z1 = np.dot(grid, W1) + b1
-A1 = sigmoid(Z1)
-Z2 = np.dot(A1, W2) + b2
-A2 = sigmoid(Z2)
-
-Z = A2.reshape(xx.shape)
-
-plt.figure()
-plt.contourf(xx, yy, Z, alpha=0.6)
-plt.scatter(X[:,0], X[:,1], c=y.ravel(), edgecolors='k')
-plt.title("Decision Boundary for XOR (MLP)")
-plt.xlabel("Input x1")
-plt.ylabel("Input x2")
-plt.grid(True)
-plt.show()
-
+plot_decision_boundary()
