@@ -1,0 +1,16 @@
+Epoch 0 | Loss: 0.263318
+Epoch 1000 | Loss: 0.031064
+Epoch 2000 | Loss: 0.003041
+Epoch 3000 | Loss: 0.001420
+
+Final Predictions:
+[[0]
+ [1]
+ [1]
+ [0]]
+
+Actual Output:
+[[0]
+ [1]
+ [1]
+ [0]]
