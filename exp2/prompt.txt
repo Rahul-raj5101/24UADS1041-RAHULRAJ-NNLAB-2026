@@ -1,0 +1,5 @@
+i want to implement a multi-layer perceptron (MLP) network with one hidden layer using numpy in Python.
+Demonstrate that it can learn the XOR Boolean function. with essential curves.
+why sigmoid used in mlp.
+why hidden layer used what its significance.
+what happen when rate of learning is high.
